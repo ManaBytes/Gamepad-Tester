@@ -90,3 +90,24 @@ h1 {
 .button-name {
   color: grey;
 }
+
+/* controller */
+
+.selected-button {
+  fill: rgb(231, 24, 24);
+}
+
+/* axes */
+
+.axis-name {
+  color: grey;
+  font-weight: bolder;
+}
+
+.axis-value {
+  color: rgb(126, 54, 54);
+}
+
+a {
+  color: red;
+}
