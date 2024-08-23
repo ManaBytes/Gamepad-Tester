@@ -47,22 +47,46 @@ h1 {
 }
 
 .loader {
-    display: inline-block;
-    border: 8px solid #484848;
-    border-radius: 50%;
-    border-top: 8px solid #3498db;
-    border-bottom: 8px solid #3498db;
-    width: 20px;
-    height: 20px;
-    -webkit-animation: spin 1.5s linear infinite;
-    animation: spin 1.5s linear infinite;
+  display: inline-block;
+  border: 8px solid #484848;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  border-bottom: 8px solid #3498db;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 1.5s linear infinite;
+  animation: spin 1.5s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
   }
-  
+}
+
+/* button grid */
+#buttons {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(min-content, max-content));
+  grid-gap: 15px;
+  justify-content: center;
+  justify-items: start;
+}
+
+.button {
+  background-color: rgb(223, 222, 222);
+  height: 50px;
+  min-width: 50px;
+  display: flex;
+}
+
+.button-text-area {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.button-name {
+  color: grey;
+}
