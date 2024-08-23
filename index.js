@@ -64,6 +64,11 @@ function updateButtonOnGrid(index, value) {
   const buttonArea = document.getElementById(`button-${index}`);
   const buttonValue = buttonArea.querySelector(".button-value");
   buttonValue.innerHTML = value.toFixed(2);
+
+  const buttonMeter = buttonArea.querySelector(".button-meter");
+  const meterHeight = Number(buttonMeter.dataset.originalYPosition);
+  const meterPosition = meterHeight - (meterHeight / 100) * (value * 100);
+  buttonMeter.setAttribute("y", meterPosition);
 }
 
 function handleButtons(buttons) {
