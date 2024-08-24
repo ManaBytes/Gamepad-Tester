@@ -140,13 +140,21 @@ function handleRumble(gamepad) {
   const rumbleOnButtonPress = document.getElementById("rumble-on-button-press");
 
   if (rumbleOnButtonPress.checked) {
-    if (gamepad.buttons.some((button) => button.value > 0)) {
-      gamepad.vibrationActuator.playEffect("dual-rumble", {
-        startDelay: 0,
-        duration: 25,
-        weakMagnitude: 1.0,
-        strongMagnitude: 1.0,
-      });
+    // Check if the gamepad has a vibrationActuator and supports the playEffect method
+    if (
+      gamepad.vibrationActuator &&
+      typeof gamepad.vibrationActuator.playEffect === "function"
+    ) {
+      if (gamepad.buttons.some((button) => button.value > 0)) {
+        gamepad.vibrationActuator.playEffect("dual-rumble", {
+          startDelay: 0,
+          duration: 25,
+          weakMagnitude: 1.0,
+          strongMagnitude: 1.0,
+        });
+      }
+    } else {
+      console.warn("Gamepad does not support vibrationActuator or playEffect.");
     }
   }
 }
