@@ -54,23 +54,23 @@ function createButtonLayout(buttons) {
 
 function createButtonHtml(index, value) {
   return `<div class="button" id="button-${index}">
-              <svg width="10px" height="50px">
-                  <rect width="10px" height="50px" fill="grey"></rect>
-                  <rect
-                      class="button-meter"
-                      width="10px"
-                      x="0"
-                      y="50"
-                      data-original-y-position="50"
-                      height="50px"
-                      fill="rgb(60, 61, 60)"
-                  ></rect>
-              </svg>
-              <div class='button-text-area'>
-                  <div class="button-name">B${index}</div>
-                  <div class="button-value">${value.toFixed(2)}</div>
-              </div>
-          </div>`;
+            <svg width="10px" height="50px">
+                <rect width="10px" height="50px" fill="grey"></rect>
+                <rect
+                    class="button-meter"
+                    width="10px"
+                    x="0"
+                    y="50"
+                    data-original-y-position="50"
+                    height="50px"
+                    fill="rgb(60, 61, 60)"
+                ></rect>
+            </svg>
+            <div class='button-text-area'>
+                <div class="button-name">B${index}</div>
+                <div class="button-value">${value.toFixed(2)}</div>
+            </div>
+        </div>`;
 }
 
 function updateButtonOnGrid(index, value) {
@@ -136,11 +136,27 @@ function updateStick(elementId, leftRightAxis, upDownAxis) {
   stick.setAttribute("cy", y + stickUpDown);
 }
 
+function handleRumble(gamepad) {
+  const rumbleOnButtonPress = document.getElementById("rumble-on-button-press");
+
+  if (rumbleOnButtonPress.checked) {
+    if (gamepad.buttons.some((button) => button.value > 0)) {
+      gamepad.vibrationActuator.playEffect("dual-rumble", {
+        startDelay: 0,
+        duration: 25,
+        weakMagnitude: 1.0,
+        strongMagnitude: 1.0,
+      });
+    }
+  }
+}
+
 function gameLoop() {
   if (controllerIndex !== null) {
     const gamepad = navigator.getGamepads()[controllerIndex];
     handleButtons(gamepad.buttons);
     handleSticks(gamepad.axes);
+    handleRumble(gamepad);
   }
   requestAnimationFrame(gameLoop);
 }
