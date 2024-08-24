@@ -170,3 +170,27 @@ function gameLoop() {
 }
 
 gameLoop();
+
+
+// Deadzone test code
+// const DEADZONE = 0.1; // Adjust as necessary
+// const ANTIDEADZONE = 0.9; // Adjust as necessary
+// function handleSticks(axes) {
+//   // Apply deadzone and anti-deadzone to the axes
+//   const processedAxes = axes.map(applyDeadzoneAndAntiDeadzone);
+  
+//   updateAxesGrid(processedAxes);
+//   updateStick("controller-b10", processedAxes[0], processedAxes[1]);
+//   updateStick("controller-b11", processedAxes[2], processedAxes[3]);
+// }
+
+// function applyDeadzoneAndAntiDeadzone(value) {
+//   // Apply deadzone
+//   if (Math.abs(value) < DEADZONE) {
+//     return 0;}
+
+//   // Apply anti-deadzone
+//   const sign = Math.sign(value);
+//   const adjustedValue = sign * Math.max((Math.abs(value) - DEADZONE) / (1 - DEADZONE), 0);
+
+//   return adjustedValue * ANTIDEADZONE + sign * (1 - ANTIDEADZONE);}
